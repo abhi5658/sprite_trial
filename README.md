@@ -1,4 +1,4 @@
-## Sprite trial
+## Stripe basic
 
 ### Steps
 - `npm init -y`
