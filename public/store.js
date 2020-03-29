@@ -78,7 +78,7 @@ function purchaseClicked() {
 
     var priceElement = document.getElementsByClassName('cart-total-price')[0]
     var price = parseFloat(priceElement.innerText.replace('$','')) * 100
-    console.log(`Please pay ${price/100} to purchase items.`)
+    // console.log(`Please pay ${price/100} to purchase items.`)
     stripeHandler.open({
         amount : price
     })

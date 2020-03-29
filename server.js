@@ -54,7 +54,7 @@ app.post('/purchase', function(req, res) {
                 source : req.body.stripeTokenId,
                 currency : 'inr'
             }).then(function() {
-                console.log('Charge successful: ',total)
+                console.log('Charge successful: ',(total/100))
                 res.json({message : `Successfully paid ${total/100} for purchased items!`})
             })
             .catch(function(error) { 
