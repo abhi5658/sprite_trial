@@ -30,6 +30,7 @@ var stripeHandler = StripeCheckout.configure({
     key : stripePublicKey,
     locale : 'en',
     token: function(token){
+        console.log('purchasing...')
         var items = []
         var cartItemsContainer = document.getElementsByClassName('cart-items')[0]
         var cartRows = cartItemsContainer.getElementsByClassName('cart-row')
@@ -55,10 +56,10 @@ var stripeHandler = StripeCheckout.configure({
                 items : items
             })
         }).then(function(res) {
-            console.log(`response:`,res)
+            // console.log(`response:`,res)
             return res.json()
         }).then(function(data) {
-            console.log(`data: `,data)
+            console.log(`message from server: `,data.message)
             alert(data.message)
             var cartItems = document.getElementsByClassName('cart-items')[0]
             while (cartItems.hasChildNodes()) {
@@ -76,6 +77,7 @@ function purchaseClicked() {
 
     var priceElement = document.getElementsByClassName('cart-total-price')[0]
     var price = parseFloat(priceElement.innerText.replace('$','')) * 100
+    console.log(`Please pay ${price/100} to purchase items.`)
     stripeHandler.open({
         amount : price
     })
@@ -135,6 +137,7 @@ function addItemToCart(title, price, imageSrc, id) {
 }
 
 function updateCartTotal() {
+    console.log('removing items from cart')
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
     var cartRows = cartItemContainer.getElementsByClassName('cart-row')
     var total = 0

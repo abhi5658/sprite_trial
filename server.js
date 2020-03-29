@@ -35,7 +35,7 @@ app.get('/store', function(req, res)  {
 app.post('/purchase', function(req, res) {
     fs.readFile('items.json', function(error, data){
         if(error){
-            console.log('reading failed')
+            console.log('reading items json failed')
             res.sendStatus(500).end()
         } else {
             const itemsJson = JSON.parse(data)
@@ -54,8 +54,8 @@ app.post('/purchase', function(req, res) {
                 source : req.body.stripeTokenId,
                 currency : 'inr'
             }).then(function() {
-                console.log('Charge successful')
-                res.json({message : 'Successfully purchased items'})
+                console.log('Charge successful: ',total)
+                res.json({message : `Successfully paid ${total} for purchased items!`})
             })
             .catch(function(error) { 
                 console.log('charging failed: ')
