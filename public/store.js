@@ -59,7 +59,7 @@ var stripeHandler = StripeCheckout.configure({
             // console.log(`response:`,res)
             return res.json()
         }).then(function(data) {
-            console.log(`message from server: `,data.message)
+            console.log(`message from server:`,data.message)
             alert(data.message)
             var cartItems = document.getElementsByClassName('cart-items')[0]
             while (cartItems.hasChildNodes()) {
