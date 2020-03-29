@@ -65,6 +65,7 @@ var stripeHandler = StripeCheckout.configure({
             while (cartItems.hasChildNodes()) {
                 cartItems.removeChild(cartItems.firstChild)
             }
+            console.log('removing items from cart')
             updateCartTotal()
         }).catch(function(err) {
             console.error(err)
@@ -137,7 +138,6 @@ function addItemToCart(title, price, imageSrc, id) {
 }
 
 function updateCartTotal() {
-    console.log('removing items from cart')
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
     var cartRows = cartItemContainer.getElementsByClassName('cart-row')
     var total = 0
