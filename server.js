@@ -55,7 +55,7 @@ app.post('/purchase', function(req, res) {
                 currency : 'inr'
             }).then(function() {
                 console.log('Charge successful: ',total)
-                res.json({message : `Successfully paid ${total} for purchased items!`})
+                res.json({message : `Successfully paid ${total/100} for purchased items!`})
             })
             .catch(function(error) { 
                 console.log('charging failed: ')
