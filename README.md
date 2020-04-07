@@ -19,3 +19,14 @@
 - initialise stripe with secret private key
 - create `/purchase` endpoint
 - add stripe charge code to use token to create charge
+
+### Git changes
+- Changing name and origin : https://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github
+- Bitbucket(other CVS if working) commit local to new repo on web
+    - create new repo on web -> repo url
+    - check remote urls: `git rmeote -v` -> no output
+    - connect remote repo: `git remote add origin repo_url` -> output with 2 origins[`fetch`, `push`]
+    - check status: `git status`
+    - `git pull origin master` -> fails[reject] if commit present in local repo -> if: `fatal: refusing to merge unrelated histories`
+    - `git pull origin master --allow-unrelated-histories` -> success -> merges web `master` into local
+    - push local repo to web: `git push origin master`
